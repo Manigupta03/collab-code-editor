@@ -121,7 +121,7 @@ export default function EditorPage() {
     setOutput(null);
     setShowOutput(true);
     try {
-      const { data } = await axios.post("http://localhost:5000/api/execute", { code, language });
+      const { data } = await axios.post("https://collab-code-editor-mvie.onrender.com/api/execute", { code, language });
       setOutput(data);
     } catch {
       setOutput({ stderr: "Could not reach execution server.", stdout: "", compile_output: "" });
