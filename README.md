@@ -1,4 +1,3 @@
-Here's the full content — just select all of this text (from # CollabCode down to the last line) and copy it directly:
 CollabCode — Real-Time Collaborative Code Editor
 A full-stack real-time collaborative code editor where multiple users can write, sync, and execute code together in shared rooms — built with React, Node.js, Socket.io, Monaco Editor, and Judge0.
 🔗 Live Demo
@@ -130,9 +129,3 @@ Monaco editor blank?
 
 Hard refresh the browser: Ctrl + Shift + R
 
-How to apply this in VS Code
-
-Click on README.md in the left sidebar (it's in the collab-editor root folder, alongside client and server)
-Click inside the editor → press Ctrl + A → press Delete
-Paste everything you copied above (Ctrl + V)
-Save with Ctrl + S
