@@ -1,149 +1,138 @@
-# CollabCode — Real-Time Collaborative Code Editor
+Here's the full content — just select all of this text (from # CollabCode down to the last line) and copy it directly:
+CollabCode — Real-Time Collaborative Code Editor
+A full-stack real-time collaborative code editor where multiple users can write, sync, and execute code together in shared rooms — built with React, Node.js, Socket.io, Monaco Editor, and Judge0.
+🔗 Live Demo
+App: https://collab-code-editor-psi.vercel.app
 
-A full-stack project for your resume. Built with React, Node.js, Socket.io, Monaco Editor, and Judge0 API.
+Backend API: https://collab-code-editor-mvie.onrender.com
 
----
+⚠️ Note: The backend runs on Render's free tier, which "sleeps" after periods of inactivity. The first request after idle time may take 20–50 seconds to respond while the server wakes up.
 
-## ⚡ Quick Setup (one time)
 
-### Prerequisites
-Install these if you don't have them:
-- **Node.js** (v18+): https://nodejs.org → download LTS
-- **VS Code**: https://code.visualstudio.com (recommended)
+🚀 How to Use
 
-### Step 1 — Clone / Open the project
-If you're reading this, you already have the files.
-Open the `collab-editor` folder in VS Code.
+Open the live demo link above
+Enter your name → click + New Room (or paste a Room ID to join an existing one)
+Share the URL with others — everyone in the room sees live code changes instantly
+Pick a language from the dropdown (8 supported)
+Click ▶ Run to execute code via Judge0 and see output (stdout/stderr/compile errors)
 
----
 
-### Step 2 — Install & run the Server
+🛠 Tech Stack
+LayerTechFrontendReact, Monaco Editor, React RouterRealtimeSocket.io (client + server)BackendNode.js, ExpressExecutionJudge0 CE API (REST)HostingVercel (frontend), Render (backend)StylingCustom CSS
 
-Open a terminal in VS Code (`Ctrl + ~`) and run:
+💡 Features
 
-```bash
-cd server
-npm install
-node index.js
-```
+Real-time multi-user code sync via Socket.io
+Room-based collaboration with shareable URLs
+Monaco Editor (same engine as VS Code)
+8 language support: JavaScript, Python, C++, C, Java, Go, Rust, TypeScript
+Live code execution via Judge0 API with colored output
+Live user presence list with color-coded indicators
+Join/leave notifications
+Synced language switching across all users in a room
 
-You should see:
-```
-Server running on port 5000
-```
 
----
-
-### Step 3 — Install & run the Client
-
-Open a **second terminal** (`Ctrl + ~`, then click the + icon) and run:
-
-```bash
-cd client
-npm install
-npm start
-```
-
-Browser opens automatically at **http://localhost:3000**
-
----
-
-## 🚀 Using the App
-
-1. Enter your name → click **+ New Room**
-2. Copy the Room ID or Share Link
-3. Open another tab / browser, paste the Room ID → Join Room
-4. Both editors sync in real time!
-5. Pick a language, write code, click **▶ Run**
-
----
-
-## 🔑 Enable Code Execution (Judge0)
-
-Code execution uses the free Judge0 public API.
-
-**For better reliability**, get a free RapidAPI key:
-1. Go to https://rapidapi.com/judge0-official/api/judge0-ce
-2. Sign up free → click "Subscribe to Test"
-3. Copy your API key
-4. In the `server/` folder, copy `.env.example` to `.env`:
-   ```bash
-   cp .env.example .env
-   ```
-5. Paste your key in `.env`:
-   ```
-   RAPIDAPI_KEY=your_actual_key_here
-   ```
-6. Restart the server (`Ctrl+C`, then `node index.js`)
-
----
-
-## 📁 Project Structure
-
-```
+📁 Project Structure
 collab-editor/
+
 ├── server/
-│   ├── index.js          ← Express + Socket.io server
-│   ├── package.json
-│   └── .env.example      ← Copy to .env and add your key
+
+│   ├── index.js          ← Express + Socket.io server, Judge0 integration
+
+│   └── package.json
+
 │
+
 └── client/
-    ├── public/
-    │   └── index.html
-    └── src/
-        ├── App.js            ← Routing
-        ├── App.css           ← All styles
-        ├── index.js          ← Entry point
-        ├── context/
-        │   └── SocketContext.jsx   ← Socket.io global connection
-        ├── pages/
-        │   ├── Home.jsx            ← Landing / join page
-        │   └── EditorPage.jsx      ← Main editor page
-        └── components/
-            ├── UsersList.jsx       ← Sidebar user list
-            └── OutputPanel.jsx     ← Code execution output
-```
 
----
+├── public/
 
-## 🛠 Tech Stack (for your resume)
+│   └── index.html
 
-| Layer    | Tech |
-|----------|------|
-| Frontend | React, Monaco Editor, React Router |
-| Realtime | Socket.io (client + server) |
-| Backend  | Node.js, Express |
-| Execution| Judge0 API (REST) |
-| Styling  | Custom CSS |
+└── src/
 
----
+├── App.js                  ← Routing
 
-## 💡 Features
+├── App.css                 ← Styles
 
-- ✅ Real-time multi-user code sync via Socket.io
-- ✅ Room-based collaboration (shareable URL)
-- ✅ Monaco Editor (same as VS Code)
-- ✅ 8 language support (JS, Python, C++, C, Java, Go, Rust, TypeScript)
-- ✅ Code execution via Judge0 API
-- ✅ Live user list with color indicators
-- ✅ Join/leave notifications
-- ✅ Language switching syncs across all users
-- ✅ Colored output (stdout/stderr/compile errors)
+├── index.js                ← Entry point
 
----
+├── context/
 
-## 🔧 Troubleshooting
+│   └── SocketContext.jsx   ← Socket.io connection (points to Render backend)
 
-**Port already in use?**
-```bash
-# Kill process on port 5000
+├── pages/
+
+│   ├── Home.jsx            ← Landing / join page
+
+│   └── EditorPage.jsx      ← Main editor page
+
+└── components/
+
+├── UsersList.jsx       ← Live presence sidebar
+
+└── OutputPanel.jsx     ← Code execution output panel
+
+🖥 Running Locally
+If you want to run this project on your own machine instead of using the live demo:
+Prerequisites
+
+Node.js (v18+): https://nodejs.org → download LTS
+VS Code: https://code.visualstudio.com (recommended)
+
+1. Clone the repo
+git clone https://github.com/Manigupta03/collab-code-editor.git
+
+cd collab-code-editor
+2. Run the server
+cd server
+
+npm install
+
+node index.js
+You should see: Server running on port 5000
+3. Run the client
+Open a second terminal:
+
+cd client
+
+npm install
+
+npm start
+Browser opens at http://localhost:3000
+⚠️ Important — switch URLs back to localhost
+The client code currently points to the deployed Render backend (https://collab-code-editor-mvie.onrender.com). To run fully locally, change these two files back to http://localhost:5000:
+
+client/src/context/SocketContext.jsx
+client/src/pages/EditorPage.jsx
+
+
+🌐 Deployment
+This project is deployed as two separate services:
+
+Frontend (client/) → deployed on Vercel
+Backend (server/) → deployed on Render as a Web Service (Root Directory: server, Build: npm install, Start: node index.js)
+
+Any push to the main branch on GitHub automatically triggers a redeploy on both platforms.
+
+🔧 Troubleshooting
+Backend not responding / sync not working?
+
+The Render free-tier server sleeps after inactivity — wait ~30 seconds on first load and try again.
+Port already in use (local)?
+
 npx kill-port 5000
-```
+npm install fails?
 
-**npm install fails?**
-```bash
 npm install --legacy-peer-deps
-```
+Monaco editor blank?
 
-**Monaco editor blank?**
-Hard refresh the browser: `Ctrl + Shift + R`
+Hard refresh the browser: Ctrl + Shift + R
+
+How to apply this in VS Code
+
+Click on README.md in the left sidebar (it's in the collab-editor root folder, alongside client and server)
+Click inside the editor → press Ctrl + A → press Delete
+Paste everything you copied above (Ctrl + V)
+Save with Ctrl + S
